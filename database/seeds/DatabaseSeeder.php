@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Loja;
 
 class DatabaseSeeder extends Seeder
 {
@@ -11,6 +12,16 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
+        User::create([
+            'nome' => 'Raffs',
+            'bairro' => 'bairro tal',
+            'numero' => 89,
+            'img' => 'caminhoqualquuer',
+            'endereco' => 'rua tal',
+            'wp' => '219389182',
+            'tell' => '02193093209321',
+            'sobre' => 'nothing about',
+        ]);
+
     }
 }
