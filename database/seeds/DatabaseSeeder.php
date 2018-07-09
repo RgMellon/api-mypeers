@@ -12,7 +12,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        User::create([
+        Loja::create([
             'nome' => 'Raffs',
             'bairro' => 'bairro tal',
             'numero' => 89,
