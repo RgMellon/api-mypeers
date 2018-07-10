@@ -15,7 +15,7 @@ class ImgUpload extends Model
         .explode('/', explode(':', substr($imageData, 0, strpos($imageData,';')))[1])[1];
 
         Image::cache(function($image) {
-            $image->make($this->imgD)->resize(250, 250);
+            $image->make($this->imgD);
         },10, true)->save(public_path('images/prod/').$fileName, 60);
 
         return $fileName;
