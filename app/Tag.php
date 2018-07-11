@@ -13,7 +13,7 @@ class Tag extends Model
         return $this->belongsToMany(Produto::class);
     }
 
-    public function busca(array $tags, Produto $p)
+    public function attachTagOnProd(array $tags, Produto $p)
     {
         foreach($tags as $t) {
             $item = Tag::where('tag', $t)->get();

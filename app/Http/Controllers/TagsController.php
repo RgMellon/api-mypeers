@@ -11,4 +11,10 @@ class TagsController extends Controller
     {
         return Tag::all();
     }
+
+    public function getProdByTagId($id)
+    {
+        $t = Tag::find($id);
+        return $t->produtos;
+    }
 }

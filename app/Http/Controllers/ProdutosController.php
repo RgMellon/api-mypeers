@@ -45,7 +45,8 @@ class ProdutosController extends Controller
             'loja_id' => $request->get('loja_id')
         ]);
 
-        $tag->busca($request->get('tags'), $p);
+        $tags = $tag->attachTagOnProd($request->get('tags'), $p);
+
         return response()->json(['sucess' => true]);
     }
 

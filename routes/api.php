@@ -25,10 +25,11 @@ Route::group(['prefix' => 'v1'], function() {
     Route::post('lojas', 'LojasController@store')->name('store.loja');
     Route::get('lojas', 'LojasController@getAll')->name('lojas');
     Route::get('tags', 'TagsController@getAll')->name('tags');
+    Route::get('tag/{id}', 'TagsController@getProdByTagId')->name('tag.get');
 });
 
-Route::get('search/', function(){
-    $queryString = Input::get('queryString');
-    $user = Tag::where('tag', 'like', "%$queryString%")->get();
-    return response()->json($user);
-});
+// Route::get('search/', function(){
+//     $queryString = Input::get('queryString');
+//     $user = Tag::where('tag', 'like', "%$queryString%")->get();
+//     return response()->json($user);
+// });
