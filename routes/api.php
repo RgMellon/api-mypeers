@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Input;
+use App\Tag;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -23,5 +24,11 @@ Route::group(['prefix' => 'v1'], function() {
     Route::post('produtos', 'ProdutosController@store')->name('store.produto');
     Route::post('lojas', 'LojasController@store')->name('store.loja');
     Route::get('lojas', 'LojasController@getAll')->name('lojas');
-    Route::post('img', 'ImgController@resize')->name('img.resize');
+    Route::get('tags', 'TagsController@getAll')->name('tags');
+});
+
+Route::get('search/', function(){
+    $queryString = Input::get('queryString');
+    $user = Tag::where('tag', 'like', "%$queryString%")->get();
+    return response()->json($user);
 });

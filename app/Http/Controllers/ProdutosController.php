@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Produto;
 use App\ImgUpload;
+use App\Tag;
 
 class ProdutosController extends Controller
 {
@@ -18,8 +19,9 @@ class ProdutosController extends Controller
         return Produto::find($id);
     }
 
-    public function store(Request $request)
+    public function store(Request $request, Tag $tag)
     {
+
         $validator = \Validator::make($request->all(), [
             'img' => 'required|image64:jpeg,jpg,png,gif',
             'nome' => 'required',
@@ -29,12 +31,13 @@ class ProdutosController extends Controller
 
         if($validator->fails()) {
             return response()->json(['errors' => $validator->errors()]);
-        }else{
-            $img = new ImgUpload();
-            $imgame = $img->upload($request->get('img'));
         }
 
-        Produto::create([
+        $img = new ImgUpload();
+        $imgame = $img->upload($request->get('img'));
+
+
+        $p = Produto::create([
             'img' => $imgame,
             'preco' => $request->get('preco'),
             'descricao' => $request->get('descricao'),
@@ -42,6 +45,7 @@ class ProdutosController extends Controller
             'loja_id' => $request->get('loja_id')
         ]);
 
+        $tag->busca($request->get('tags'), $p);
         return response()->json(['sucess' => true]);
     }
 
