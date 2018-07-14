@@ -12,6 +12,7 @@
         "intervention/image": "^2.4",
         "intervention/imagecache": "^2.3",
         "laravel/framework": "5.6.*",
+        "laravel/passport": "^6.0",
         "laravel/tinker": "^1.0",
         "nesbot/carbon": "1.25.*"
     },
