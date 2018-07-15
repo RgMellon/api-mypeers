@@ -11,11 +11,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::middleware('auth:api')->prefix('v1')->group(function() {
     
-   Route::get('produtos', 'ProdutosController@getAll')->name('produtos');
+//    Route::get('produtos', 'ProdutosController@getAll')->name('produtos');
     //aqui vai as rotas
 });
 
 Route::group(['prefix' => 'v1'], function() {
+    Route::get('produtos', 'ProdutosController@getAll')->name('produtos');
     Route::get('produtos/{id}', 'ProdutosController@getById')->name('get.produto');
     Route::post('produtos', 'ProdutosController@store')->name('store.produto');
     Route::post('lojas', 'LojasController@store')->name('store.loja');
