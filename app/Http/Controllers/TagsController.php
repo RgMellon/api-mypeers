@@ -9,6 +9,11 @@ class TagsController extends Controller
 {
     public function getAll()
     {
+        // $min = \Carbon\Carbon::now()->addMinutes(10);
+        // $tag = \Cache::remember('api::tag', $min, function () {
+        //     return Tag::all();
+        // });
+        // return $tag;
         return Tag::all();
     }
 

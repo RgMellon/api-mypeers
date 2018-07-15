@@ -11,6 +11,11 @@ class ProdutosController extends Controller
 {
     public function getAll()
     {
+        // $min = \Carbon\Carbon::now()->addMinutes(10);
+        // $prod = \Cache::remember('api::prod', $min, function () {
+        //     return Produto::orderBy('created_at', 'desc')->get();
+        // });
+        // return $prod;
         return Produto::orderBy('created_at', 'desc')->get();
     }
 
