@@ -23,9 +23,6 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
-
-        
-
         $request->request->add([
             'grant_type' =>'password',
             'client_id' =>'3',
