@@ -30,7 +30,7 @@ class RegisterController extends Controller
             'client_secret' =>'OVpBpaUeBbHkFb4FFhGBesZFtCA0PljDbT8BaUMa',
             'username' => $request->get('email'),
             'password' => $request->get('password'),
-            'scope' => null,
+            'scope' => '*',
         ]);
         
         // Fire off the internal request. 
