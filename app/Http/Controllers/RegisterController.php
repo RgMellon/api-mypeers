@@ -16,12 +16,12 @@ class RegisterController extends Controller
         if ($v->fails()) {
             return response()->json($v->errors()->all(), 400);
         }
-        $data = request()->only('email','name','password');
+       
 
         $user = \App\User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
+            'name' => $request->get('name'),
+            'email' => $request->get('email'),
+            'password' => bcrypt($request->get('email')),
         ]);
         
         $request->request->add([
