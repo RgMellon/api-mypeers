@@ -24,7 +24,7 @@ class RegisterController extends Controller
             'password' => bcrypt($data['password']),
         ]);
 
-        $client = \Laravel\Passport\Client::where('password_client', 1)->first();
+        
 
         $request->request->add([
             'grant_type' =>'password',
