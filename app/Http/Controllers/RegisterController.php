@@ -26,12 +26,11 @@ class RegisterController extends Controller
         return $request->get('email');
         $request->request->add([
             'grant_type' =>'password',
-            'client_id' =>'4',
-            'client_secret' =>'VqtNcsODSTokYkmmeZzWHanouYVr0RarH9wIBaRS',
+            'client_id' =>'5',
+            'client_secret' =>'kzv90XaSYp89vTdUGnXUHS8FRdUL1gTRgOgIUwzF',
             'username' => $request->get('email'),
             'password' => $request->get('password'),
             'scope' => null,
-            'redirect_uri' => url('/callback'),
         ]);
         
         // Fire off the internal request. 
