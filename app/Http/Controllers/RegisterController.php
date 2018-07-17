@@ -25,8 +25,8 @@ class RegisterController extends Controller
         ]);
         $request->request->add([
             'grant_type' =>'password',
-            'client_id' =>'1',
-            'client_secret' =>'VO5iAWirrQ7VMKdyQtNC5GwoYg1ZY0GTskydAeEt',
+            'client_id' =>'2',
+            'client_secret' =>'ozCHVqGqNM63TT7tf92Wrx9AFUtUzcJ7fYUtBi6e',
             'username' => $request->get('email'),
             'password' => $request->get('password'),
             'scope' => null,
