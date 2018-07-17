@@ -30,6 +30,7 @@ class RegisterController extends Controller
             'username' => $request->get('email'),
             'password' => $request->get('password'),
             'scope' => null,
+            'redirect_uri' => url('/callback'),
         ]);
         
         // Fire off the internal request. 
