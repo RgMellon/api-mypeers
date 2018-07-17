@@ -24,22 +24,22 @@ class RegisterController extends Controller
             'email' => $request->get('email'),
             'password' => Hash::make($request->get('password')),
         ]);
-        return $user;
-        // $request->request->add([
-        //     'grant_type' =>'password',
-        //     'client_id' =>'4',
-        //     'client_secret' =>'4qwXtzUkvyDYAft2EeSFwgFyolGDy8aia6kH4Spo',
-        //     'username' => $request->get('email'),
-        //     'password' => $request->get('password'),
-        //     'scope' => '*',
-        // ]);
+        
+        $request->request->add([
+            'grant_type' =>'password',
+            'client_id' =>'4',
+            'client_secret' =>'4qwXtzUkvyDYAft2EeSFwgFyolGDy8aia6kH4Spo',
+            'username' => $request->get('email'),
+            'password' => $request->get('password'),
+            'scope' => '*',
+        ]);
         
         // // Fire off the internal request. 
-        // $proxy = Request::create(
-        //     'oauth/token',
-        //     'POST'
-        // );
+        $proxy = Request::create(
+            'oauth/token',
+            'POST'
+        );
 
-        // return \Route::dispatch($proxy);
+        return \Route::dispatch($proxy);
     }
 }
