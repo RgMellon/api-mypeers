@@ -23,6 +23,7 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+        return $request->get('email');
         $request->request->add([
             'grant_type' =>'password',
             'client_id' =>'4',
