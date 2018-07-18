@@ -26,6 +26,7 @@ Route::group(['prefix' => 'v1'], function() {
 });
 
 Route::post('register', 'RegisterController@register')->name('register');
+Route::post('login', 'Auth\Api\LoginController@login')->name('login');
 // Route::get('search/', function(){
 //     $queryString = Input::get('queryString');
 //     $user = Tag::where('tag', 'like', "%$queryString%")->get();
