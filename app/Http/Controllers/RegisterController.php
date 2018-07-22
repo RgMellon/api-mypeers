@@ -9,6 +9,7 @@ use App\Token;
 class RegisterController extends Controller
 {
     public function register(Request $request) {
+        
         $v = validator($request->only('email', 'name', 'password'), [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',

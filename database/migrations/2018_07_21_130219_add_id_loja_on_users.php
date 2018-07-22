@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddFieldSobrelOnLojas extends Migration
+class AddIdLojaOnUsers extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,8 @@ class AddFieldSobrelOnLojas extends Migration
     public function up()
     {
         Schema::table('lojas', function (Blueprint $table) {
-            $table->text('sobre');
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
@@ -25,8 +26,8 @@ class AddFieldSobrelOnLojas extends Migration
      */
     public function down()
     {
-        Schema::table('lojas', function (Blueprint $table) {
-            $table->dropColumn('sobre');
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('loja_id');
         });
     }
 }

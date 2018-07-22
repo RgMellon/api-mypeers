@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             'wp' => '219389182',
             'tell' => '02193093209321',
             'sobre' => 'nothing about',
+            'user_id' => 1
         ]);
 
     }
