@@ -39,3 +39,7 @@ Route::group(['prefix' => 'v1'], function() {
 
 Route::post('register', 'RegisterController@register')->name('register');
 Route::post('login', 'Auth\Api\LoginController@login')->name('login');
+
+Route::get('user', function() {
+    return App\User::all();
+});
