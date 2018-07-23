@@ -12,8 +12,8 @@ class Token extends Model
 
     $request->request->add([
         'grant_type' => 'password',
-        'client_id' =>'5',
-        'client_secret' => 'yDmeB2oLndq4nQnHrrlRuwX5AwttoAvRSeSgvVB7',
+        'client_id' =>'2',
+        'client_secret' => 'rxTIMkaDnoGWxvafAnL5dc3RqBI3627DsSvCG9uX',
         'username' => $request->get('email'),
         'password' => $request->get('password'),
         'scope' => '*',
