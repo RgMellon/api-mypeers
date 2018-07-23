@@ -2,12 +2,10 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
-use App\Tag;
 
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+
+Route::middleware('auth:api')->get('/user', 'UserController@user');
 
 Route::middleware('auth:api')->prefix('v1')->group(function() {
     Route::get('produtos', 'ProdutosController@getAll')->name('produtos');
