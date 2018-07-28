@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Produto;
 use App\ImgUpload;
 use App\Tag;
+use App\Loja;
 
 class ProdutosController extends Controller
 {
@@ -53,6 +54,11 @@ class ProdutosController extends Controller
         $tags = $tag->attachTagOnProd($request->get('tags'), $p);
 
         return response()->json(['sucess' => true]);
+    }
+
+    public function getProdutoByLoja(Loja $loja)
+    {
+       return $loja->produto;
     }
 
 }

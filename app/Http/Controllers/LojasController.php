@@ -6,6 +6,7 @@ use Validator;
 use App\User;
 use App\ImgUpload;
 use Illuminate\Http\Request;
+use App\Produto;
 
 class LojasController extends Controller
 {
@@ -43,7 +44,6 @@ class LojasController extends Controller
     public function getLojaByUser(User $user)
     {
         return $user->loja;
-
     }
 
     public function getLojaById(Loja $loja)
@@ -51,7 +51,48 @@ class LojasController extends Controller
         return $loja;
     }
 
-    public function update(Request $request) {
-        return 'entreii aqui';
+    public function update(Request $request, Loja $loja) {
+        // o request->img vem no formato data:base64 do front,
+        // aqui é verificado se esta nesse formato, pegando a primeira cadeia
+        // e verificando se é data
+        // se estiver, então faz update da imagem.
+        $existsData = substr($request->get('img'), 0,  4);
+        if($existsData == 'data')
+        {
+            $img = new ImgUpload();
+            $imgName = $img->uploadBannerLoja($request->get('img'));
+
+            $loja->update([
+                'img' => $imgName,
+                'nome' => $request->get('nome'),
+                'bairro' => $request->get('bairro'),
+                'endereco' => $request->get('endereco'),
+                'numero' => $request->get('numero'),
+                'sobre' => $request->get('sobre'),
+                'tell' => $request->get('tel'),
+                'wp' => $request->get('wp'),
+            ]);
+
+            return $loja;
+
+        } else {
+
+            $loja->update([
+                'nome' => $request->get('nome'),
+                'bairro' => $request->get('bairro'),
+                'endereco' => $request->get('endereco'),
+                'numero' => $request->get('numero'),
+                'sobre' => $request->get('sobre'),
+                'tell' => $request->get('tel'),
+                'wp' => $request->get('wp'),
+            ]);
+
+            return $loja;
+        }
+    }
+
+    public function getLojaByProduto(Produto $produto)
+    {
+        return $produto->loja;
     }
 }

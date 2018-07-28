@@ -12,5 +12,10 @@ class Produto extends Model
     {
         return $this->belongsToMany(Tag::class);
     }
+
+    public function loja()
+    {
+        return $this->belongsTo(Loja::class);
+    }
 }
 
