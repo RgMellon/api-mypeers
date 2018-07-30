@@ -4,9 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Produto;
-use App\ImgUpload;
+use App\Image\ImgUpload;
 use App\Tag;
 use App\Loja;
+
 
 class ProdutosController extends Controller
 {
@@ -59,6 +60,12 @@ class ProdutosController extends Controller
     public function getProdutoByLoja(Loja $loja)
     {
        return $loja->produto;
+    }
+
+    public function delete(Request $request)
+    {
+        Produto::destroy(1);
+        
     }
 
 }

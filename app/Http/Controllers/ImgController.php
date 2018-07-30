@@ -8,8 +8,14 @@ use Image;
 
 class ImgController extends Controller
 {
-    public function resize(Request $request) {
+    public function resize(Request $request)
+    {
        $data = (string) \Image::make($request->get('img'))->fit(1000, 1000)->encode('data-url');
        return $data;
+    }
+
+    public function delete()
+    {
+
     }
 }

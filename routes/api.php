@@ -29,9 +29,12 @@ Route::group(['prefix' => 'v1'], function() {
     Route::get('produtos', 'ProdutosController@getAll')->name('produtos');
     Route::get('produtos/{id}', 'ProdutosController@getById')->name('get.produto');
     Route::get('produtos/loja/{loja}', 'ProdutosController@getProdutoByLoja')
-        ->name('get.produto.loja')->middleware('auth:api');
-    Route::post('produtos', 'ProdutosController@store')->name('store.produto')
-        ->middleware('auth:api');
+    ->name('get.produto.loja');
+});
+// Rota dos Produtos admin
+Route::group(['prefix' => 'v1', 'middleware' => 'auth:api'], function () {
+    Route::post('produtos', 'ProdutosController@store')->name('store.produto');
+    Route::delete('produto', 'ProdutosController@delete')->name('delete.produto');
 });
 
 // Rota das Tags
@@ -39,6 +42,9 @@ Route::group(['prefix' => 'v1'], function() {
     Route::get('tags', 'TagsController@getAll')->name('tags');
     Route::get('tag/{id}', 'TagsController@getProdByTagId')->name('tag.get');
 });
+
+
+//Rota Favoritos
 
 
 Route::post('register', 'RegisterController@register')->name('register');

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use App\Loja;
 use Validator;
 use App\User;
-use App\ImgUpload;
+use App\Image\ImgUpload;
 use Illuminate\Http\Request;
 use App\Produto;
 
